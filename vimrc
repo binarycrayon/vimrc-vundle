@@ -4,14 +4,14 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-
 " ==========================================================
 " Bundles
 " ==========================================================
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
+Bundle 'Professional-colorscheme-for-Vim'
 Bundle 'yudixue/vim-colors'
 Bundle 'wincent/Command-T'
 Bundle 'c9s/bufexplorer'
@@ -33,6 +33,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'nerdtree-ack'
+Bundle 'StripWhiteSpaces'
 
 " ==========================================================
 " Shortcuts
@@ -75,7 +79,6 @@ map! <D-6> <C-O>:tabn 6<CR>
 map! <D-7> <C-O>:tabn 7<CR>
 map! <D-8> <C-O>:tabn 8<CR>
 map! <D-9> <C-O>:tabn 9<CR>
-
 
 "<CR><C-w>l<C-f>:set scrollbind<CR>
 
@@ -124,23 +127,12 @@ map <leader>n :NERDTreeToggle<CR>
 
 " Run command-t file search
 map <leader>f :CommandT<CR>
+
 " Ack searching
 nmap <leader>a <Esc>:Ack!
 
 " Load the Gundo window
 map <leader>g :GundoToggle<CR>
-
-" Jump to the definition of whatever the cursor is on
-map <leader>j :RopeGotoDefinition<CR>
-
-" Rename whatever the cursor is on (including references to it)
-map <leader>r :RopeRename<CR>
-
-" nerdcommenter
-" ,/ to invert comment on the current line/selection
-nmap <leader>/ :call NERDComment(0, "invert")<cr>
-vmap <leader>/ :call NERDComment(0, "invert")<cr>
-
 
 " ==========================================================
 " Basic Settings
@@ -252,8 +244,8 @@ if has("gui_running")
     " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
     "set guifont=Inconsolata\ for\ Powerline:h16
     set guifont=Source\ Code\ Pro\ for\ Powerline:h13
-
-    colorscheme Satori
+    colorscheme pyte
+    "colorscheme Satori
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 
     " Remove menu bar
@@ -509,7 +501,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " Sets minimum char length of syntax keyword.
 let g:neocomplcache_min_syntax_length = 3
-" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
+" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define file-type dependent dictionaries.
@@ -560,7 +552,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable heavy omni completion, which require computational power and may stall the vim. 
+" Enable heavy omni completion, which require computational power and may stall the vim.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
@@ -607,4 +599,13 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 " Gundo
 " ---------------
 nnoremap <F5> :GundoToggle<CR>
+
+" ---------------
+" Gundo
+" ---------------
+" Jedi automatically starts the completion, if you type a dot, e.g. str., I
+" don't wath this:
+" let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+
 
