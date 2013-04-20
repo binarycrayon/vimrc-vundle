@@ -16,7 +16,7 @@ Bundle 'yudixue/vim-colors'
 Bundle 'wincent/Command-T'
 Bundle 'c9s/bufexplorer'
 Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
@@ -37,6 +37,9 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'nerdtree-ack'
 Bundle 'StripWhiteSpaces'
+Bundle 'squil/vim_colors'
+Bundle 'LargeFile'
+Bundle 'terryma/vim-multiple-cursors'
 
 " ==========================================================
 " Shortcuts
@@ -121,9 +124,6 @@ map <c-d> <c-w>h
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 "  happen as if in command mode )
 imap <C-W> <C-O><C-W>
-
-" Open NerdTree
-map <leader>n :NERDTreeToggle<CR>
 
 " Run command-t file search
 map <leader>f :CommandT<CR>
@@ -244,8 +244,10 @@ if has("gui_running")
     " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
     "set guifont=Inconsolata\ for\ Powerline:h16
     set guifont=Source\ Code\ Pro\ for\ Powerline:h13
-    colorscheme pyte
-    "colorscheme Satori
+    "colorscheme pyte
+    " colorscheme phd
+    colorscheme Satori
+    " colorscheme coda
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 
     " Remove menu bar
@@ -253,6 +255,7 @@ if has("gui_running")
 
     " Remove toolbar
     set guioptions-=T
+    set macmeta
 else
     colorscheme Satori
 endif
@@ -293,7 +296,6 @@ autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 so
 
 " Python
 "au BufRead *.py compiler nose
-au FileType python set omnifunc=pythoncomplete#Complete
 au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -490,7 +492,8 @@ endif
 " neocomplcache
 " ---------------
 " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
-let g:acp_enableAtStartup = 0
+" let g:acp_enableAtStartup = 0
+"
 " Launches neocomplcache automatically on vim startup.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
@@ -526,12 +529,12 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
@@ -551,7 +554,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
+" Turn off completion for log, it stalls vim
+autocmd FileType log :NeoComplCacheLock
 " Enable heavy omni completion, which require computational power and may stall the vim.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -608,4 +612,29 @@ nnoremap <F5> :GundoToggle<CR>
 " let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 
+" ---------------
+" LargeFile
+" ---------------
+" Set 10 mb as threshold for large file
+
+let g:LargeFile = 10
+
+" ---------------
+" vim multiple cursors
+" ---------------
+" After you've marked all your locations with Ctrl-n, you can change the visual selection with normal Vim motion
+" commands in Visual mode. You could go to Normal mode by pressing v and wield your motion commands there.
+"
+" Single key command to switch to Insert mode such as c or s from Visual mode or i, a, I, A in Normal mode should
+" work without any issues.
+"
+" Set 10 mb as threshold for large file
+" let g:multi_cursor_use_default_mapping=0
+" You can then map the 'next', 'previous', 'skip', and 'exit' keys like the following:
+
+" Default mapping
+" let g:multi_cursor_next_key='<C-n>'
+" let g:multi_cursor_prev_key='<C-p>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
 
