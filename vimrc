@@ -11,8 +11,9 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-Bundle 'Professional-colorscheme-for-Vim'
-Bundle 'yudixue/vim-colors'
+" Bundle 'Professional-colorscheme-for-Vim'
+" Bundle 'yudixue/vim-colors'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
 Bundle 'c9s/bufexplorer'
 Bundle 'ervandew/supertab'
@@ -37,7 +38,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'nerdtree-ack'
 Bundle 'StripWhiteSpaces'
-Bundle 'squil/vim_colors'
+" Bundle 'squil/vim_colors'
 Bundle 'LargeFile'
 Bundle 'terryma/vim-multiple-cursors'
 
@@ -246,7 +247,7 @@ if has("gui_running")
     set guifont=Source\ Code\ Pro\ for\ Powerline:h13
     "colorscheme pyte
     " colorscheme phd
-    colorscheme Satori
+    colorscheme Solarized
     " colorscheme coda
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 
@@ -597,6 +598,7 @@ if has('win32') || has('win64')
 elseif has('gui_macvim')
   let g:Powerline_symbols = 'fancy'
 endif
+let g:Powerline_colorscheme = 'solarized256'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " ---------------
