@@ -37,6 +37,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'nerdtree-ack'
+" Bundle 'vim-flake8'
 Bundle 'StripWhiteSpaces'
 " Bundle 'squil/vim_colors'
 Bundle 'LargeFile'
@@ -639,4 +640,25 @@ let g:LargeFile = 10
 " let g:multi_cursor_prev_key='<C-p>'
 " let g:multi_cursor_skip_key='<C-x>'
 " let g:multi_cursor_quit_key='<Esc>'
+"
+
+" ---------------
+" vim-flake8
+" ---------------
+" Set max line length to 120
+" let g:flake8_max_line_length=120
+
+" Add built in
+" let g:flake8_builtins="_,apply"
+
+" Call flake8 everytime writing a py file
+" autocmd BufWritePost *.py call Flake8()
+
+
+" ---------------
+" syntastic
+" ---------------
+" use flake8 for syntastic  NOTE: requires flake8; install flake8 with pip install flake8
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--max-line-length=120'
 
