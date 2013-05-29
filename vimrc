@@ -42,6 +42,10 @@ Bundle 'StripWhiteSpaces'
 " Bundle 'squil/vim_colors'
 Bundle 'LargeFile'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Floobits/vim-plugin'
+Bundle 'Enhanced-Javascript-syntax'
+Bundle 'vim-jsbeautify'
+
 
 " ==========================================================
 " Shortcuts
