@@ -41,6 +41,7 @@ Bundle 'dbsr/vimfox'
 " YouCompleteMe needs comple
 Bundle 'Valloric/YouCompleteMe'
 Bundle "ap/vim-css-color"
+Bundle 'yankstack'
 
 " ==========================================================
 " Shortcuts
@@ -562,4 +563,11 @@ let g:LargeFile = 10
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--max-line-length=120'
 let g:syntastic_javascript_checkers = ['jsl']
+
+" ---------------
+" yankstack
+" ---------------
+" A note about the meta key - if you're using MacVim, and you want to use this plugin's default key bindings
+" (or any bindings involving the option key), you must :set macmeta
+set macmeta
 
